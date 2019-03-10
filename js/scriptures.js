@@ -225,11 +225,11 @@ let getScriptureCallback = function (chapterHtml) {
     $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 500, function(){
         document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
         $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, 500);
+        document.querySelectorAll(".navheading").forEach(function (element) {
+            element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
+        });
+        document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
     });
-    document.querySelectorAll(".navheading").forEach(function (element) {
-        element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
-    });
-    document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
     setupMarkers();
 };
 
