@@ -57,7 +57,7 @@ const ZOOM_RATIO = 450;
 /*------------------------------------------------------------------------
  *                      PRIVATE VARIABLES
  */
-let scriptureAnimType;
+let scriptureAnimType = "fade";
 let books;
 let currentChapter = -1;
 let gmLabels = [];
