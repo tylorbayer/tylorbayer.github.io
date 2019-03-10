@@ -73,7 +73,7 @@ let volumes;
  *                      PRIVATE METHODS
  */
 $(`#${DIV_SHOWHIDE}`).click(function() {
-    $(`#${DIV_SCRIPTURES}`).animate({width: "toggle"},{duration: 5000});
+    $(`#${DIV_SCRIPTURES}`).animate({width: "toggle"});
     if ($(`#${SPAN_SHOWHIDE}`).text() === "<<") {
         $(`#${SPAN_SHOWHIDE}`).text(">>");
     } else {
