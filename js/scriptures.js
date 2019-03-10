@@ -247,7 +247,7 @@ let getScriptureCallback = function (chapterHtml) {
         case "right":
             $(`#${DIV_SCRIPTURES}`).animate({right : -width}, ANIMATION_SPEED, function(){
                 document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
-                $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, ANIMATION_SPEED);
+                $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({right: 0}, ANIMATION_SPEED);
                 document.querySelectorAll(".navheading").forEach(function (element) {
                     element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
                 });
