@@ -59,7 +59,7 @@ const ZOOM_RATIO = 450;
  */
 let scriptureAnimType;
 let books;
-let currentChapter -1;
+let currentChapter = -1;
 let gmLabels = [];
 let gmMarkers = [];
 let requestedBreadcrumbs;
