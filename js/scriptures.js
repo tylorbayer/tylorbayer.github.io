@@ -616,6 +616,7 @@ let transitionBreadcrumbs = function (newCrumbs) {
 };
 
 let transitionScriptures = function (newContent) {
+    $('#{}'.format(DIV_SCRIPTURES)).animate({ left: 100 });
     document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
     setupMarkers(newContent);
 };
