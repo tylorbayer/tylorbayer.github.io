@@ -79,7 +79,7 @@ div.subtitle {
 #scriptures {
     min-width: 220px;
     max-width: 440px;
-    flex: 1 1 30%;
+    flex: 1 1 29%;
     height: 100%;
     min-height: 100%;
     overflow-x: hidden;
@@ -94,6 +94,18 @@ div.subtitle {
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
+}
+
+#showhide {
+    flex: 1 1 1%;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #aaa;
+    position: relative;
+    vertical-align: middle;
+    background: #aaaaaa;
 }
 
 #map {
