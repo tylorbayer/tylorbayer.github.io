@@ -221,6 +221,7 @@ let encodedScriptureUrlParameters = function (bookId, chapter, verses, isJst) {
 };
 
 let getScriptureCallback = function (chapterHtml) {
+    let width = $(window).width();
     $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 500, function(){
         document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
         $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, 500);
@@ -622,8 +623,6 @@ let transitionBreadcrumbs = function (newCrumbs) {
 };
 
 let transitionScriptures = function (newContent) {
-    let width = $(window).width();
-
     $(`#${DIV_SCRIPTURES}`).fadeOut("slow", function(){
         document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
         $(`#${DIV_SCRIPTURES}`).fadeIn("slow");
