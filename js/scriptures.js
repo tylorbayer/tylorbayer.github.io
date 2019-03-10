@@ -621,7 +621,7 @@ let transitionScriptures = function (newContent) {
     // $div.css({left: width}).show().animate({left: 0}, 500);
 
     $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 500, function(){
-        $(this).replaceWith(htmlDiv({content: newContent}));
+        document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
         $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, 500);
     });
     // document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
