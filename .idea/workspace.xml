@@ -37,13 +37,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="15" />
-          <entry key="js" value="455" />
+          <entry key="js" value="469" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="15" />
-          <entry key="JavaScript" value="455" />
+          <entry key="JavaScript" value="469" />
         </counts>
       </usages-collector>
     </session>
@@ -62,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/scriptures.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="477" column="7" lean-forward="true" selection-start-line="477" selection-start-column="7" selection-end-line="477" selection-end-column="7" />
+            <state relative-caret-position="404">
+              <caret line="260" column="36" lean-forward="true" selection-start-line="260" selection-start-column="36" selection-end-line="260" selection-end-column="36" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -95,8 +95,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nextchapter</find>
-      <find>previousChapter</find>
       <find>navigateHome</find>
       <find>volumesGridContent</find>
       <find>newContent</find>
@@ -125,7 +123,12 @@
       <find>.animate</find>
       <find>.innerhtml =</find>
       <find>transitionBreadcrumbs</find>
+      <find>document.getElementById(DIV_BREADCRUMBS).innerHTML =</find>
+      <find>&quot;slow&quot;</find>
     </findStrings>
+    <replaceStrings>
+      <replace>ANIMATION_SPEED</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -265,8 +268,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scriptures.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="477" column="7" lean-forward="true" selection-start-line="477" selection-start-column="7" selection-end-line="477" selection-end-column="7" />
+        <state relative-caret-position="404">
+          <caret line="260" column="36" lean-forward="true" selection-start-line="260" selection-start-column="36" selection-end-line="260" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
