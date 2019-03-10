@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>The Scriptures, Mapped</title>
+    <meta name="description" content="The Standard Works, Mapped">
+    <meta name="author" content="Stephen W. Liddle">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+</head>
+<body>
+    <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+        Please <a href="https://browsehappy.com/">upgrade your browser</a>
+        to improve your experience and security.</p>
+    <![endif]-->
+
+    <div id="header">
+        <div id="crumbs"></div>
+        <div id="centerhead">
+            <div id="title">The Scriptures, Mapped</div>
+            <div id="subtitle">By Stephen W. Liddle</div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="scriptures"></div>
+        <div id="map"></div>
+    </div>
+    <script type="text/javascript">
+        let map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 31.777444, lng: 35.234935},
+                zoom: 8
+            });
+        };
+    </script>
+    <script type="module">
+        import("./js/scriptures.js").then(module => {
+            function ready(eventHandler) {
+                if (document.attachEvent
+                        ? document.readyState === "complete"
+                        : document.readyState !== "loading") {
+                    eventHandler();
+                } else {
+                    document.addEventListener("DOMContentLoaded", eventHandler);
+                }
+            }
+
+            window.changeHash = module.default.changeHash;
+            window.showLocation = module.default.showLocation;
+
+            ready(function () {
+                module.default.init(function () {
+                    MapLabelInit();
+                    window.addEventListener("hashchange", module.default.onHashChanged);
+                    module.default.onHashChanged();
+                })
+            });
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN3ea_ziDE48QeBzX5xHnKMpxhxsn_qgI&callback=initMap"
+            async defer></script>
+    <script src="js/maplabel.js" defer></script>
+</body>
+</html>
