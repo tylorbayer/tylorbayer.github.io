@@ -97,7 +97,7 @@ div.subtitle {
 }
 
 #showhide {
-    flex: 1 1 1%;
+    flex: 0 1 1%;
     height: 100%;
     min-height: 100%;
     overflow-x: hidden;
