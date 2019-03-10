@@ -221,7 +221,10 @@ let encodedScriptureUrlParameters = function (bookId, chapter, verses, isJst) {
 };
 
 let getScriptureCallback = function (chapterHtml) {
-    document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
+    $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 500, function(){
+        document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
+        $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, 500);
+    });
     document.querySelectorAll(".navheading").forEach(function (element) {
         element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
     });
@@ -435,9 +438,12 @@ let navigateChapter = function (bookId, chapter) {
 };
 
 let navigateHome = function (volumeId) {
-    document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({
-        id: DIV_SCRIPTURES_NAVIGATOR,
-        content: volumesGridContent(volumeId)
+    $(`#${DIV_SCRIPTURES}`).fadeOut("slow", function(){
+        document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({
+            id: DIV_SCRIPTURES_NAVIGATOR,
+            content: volumesGridContent(volumeId)
+        });
+        $(`#${DIV_SCRIPTURES}`).fadeIn("slow");
     });
 
     document.getElementById(DIV_BREADCRUMBS).innerHTML = breadcrumbs(volumeForId(volumeId));
@@ -617,14 +623,11 @@ let transitionBreadcrumbs = function (newCrumbs) {
 
 let transitionScriptures = function (newContent) {
     let width = $(window).width();
-    // $('#divID').animate({left : -width}, 500, function(){ $div.hide() });
-    // $div.css({left: width}).show().animate({left: 0}, 500);
 
-    $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 500, function(){
+    $(`#${DIV_SCRIPTURES}`).fadeOut("slow", function(){
         document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
-        $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, 500);
+        $(`#${DIV_SCRIPTURES}`).fadeIn("slow");
     });
-    // document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
     setupMarkers(newContent);
 };
 
