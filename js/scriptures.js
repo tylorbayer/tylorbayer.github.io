@@ -77,7 +77,7 @@ $(`#${DIV_SHOWHIDE}`).click(function() {
     if ($(`#${SPAN_SHOWHIDE}`).text() === "<<") {
         $(`#${SPAN_SHOWHIDE}`).text(">>");
     } else {
-        $(`#${SPAN_SHOWHIDE}`).text(">>");
+        $(`#${SPAN_SHOWHIDE}`).text("<<");
     }
 });
 
