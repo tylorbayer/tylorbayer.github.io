@@ -104,8 +104,15 @@ div.subtitle {
     overflow-y: auto;
     border-right: 1px solid #aaa;
     position: relative;
-    vertical-align: middle;
     background: #aaaaaa;
+}
+
+#showhide span {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #map {
