@@ -234,6 +234,7 @@ let getScriptureCallback = function (chapterHtml) {
                     element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
                 });
             });
+            break;
         case "left":
             $(`#${DIV_SCRIPTURES}`).animate({left : -width}, ANIMATION_SPEED, function(){
                 document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
@@ -242,6 +243,7 @@ let getScriptureCallback = function (chapterHtml) {
                     element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
                 });
             });
+            break;
         case "right":
             $(`#${DIV_SCRIPTURES}`).animate({left : width}, ANIMATION_SPEED, function(){
                 document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
@@ -250,6 +252,7 @@ let getScriptureCallback = function (chapterHtml) {
                     element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
                 });
             });
+            break;
     }
     $(`#${DIV_BREADCRUMBS}`).fadeOut(ANIMATION_SPEED, function(){
         document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
