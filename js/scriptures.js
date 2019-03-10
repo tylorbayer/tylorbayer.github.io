@@ -72,7 +72,12 @@ let volumes;
  *                      PRIVATE METHODS
  */
 $(`#${DIV_SHOWHIDE}`).click(function() {
-    $(`#${DIV_SCRIPTURES}`).fadeToggle(ANIMATION_SPEED)
+    $(`#${DIV_SCRIPTURES}`).fadeToggle(ANIMATION_SPEED, function () {
+        $(`#${DIV_SCRIPTURES}`).first().text(">>")
+    },
+    function () {
+        $(`#${DIV_SCRIPTURES}`).first().text("<<")
+    });
 });
 
 let addMarker = function (placename, latitude, longitude) {
