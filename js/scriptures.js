@@ -73,16 +73,12 @@ let volumes;
  *                      PRIVATE METHODS
  */
 $(`#${DIV_SHOWHIDE}`).click(function() {
-    $(`#${DIV_SCRIPTURES}`).animate({
-    opacity: 0.25,
-    width: "toggle"
-  }, 5000, function() {
+    $(`#${DIV_SCRIPTURES}`).animate({ width: "toggle" });
     if ($(`#${SPAN_SHOWHIDE}`).text() === "<<") {
-            $(`#${SPAN_SHOWHIDE}`).text(">>");
-        } else {
-            $(`#${SPAN_SHOWHIDE}`).text(">>");
-        }
-  });
+        $(`#${SPAN_SHOWHIDE}`).text(">>");
+    } else {
+        $(`#${SPAN_SHOWHIDE}`).text(">>");
+    }
 });
 
 let addMarker = function (placename, latitude, longitude) {
