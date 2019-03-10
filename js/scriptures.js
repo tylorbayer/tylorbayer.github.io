@@ -618,7 +618,7 @@ let transitionBreadcrumbs = function (newCrumbs) {
 let transitionScriptures = function (newContent) {
     let width = $(window).width();
     // $('#divID').animate({left : -width}, 500, function(){ $div.hide() });
-    $div.css({left: width}).show().animate({left: 0}, 500);
+    // $div.css({left: width}).show().animate({left: 0}, 500);
 
     $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 500, function(){
         $(this).replaceWith(htmlDiv({content: newContent}));
