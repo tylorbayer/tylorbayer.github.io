@@ -26,6 +26,7 @@
 /*------------------------------------------------------------------------
  *                      CONSTANTS
  */
+const ANIMATION_SPEED = 300
 const BOTTOM_PADDING = "<br /><br />";
 const CLASS_BOOKS = "books";
 const CLASS_VOLUME = "volume";
@@ -56,7 +57,9 @@ const ZOOM_RATIO = 450;
 /*------------------------------------------------------------------------
  *                      PRIVATE VARIABLES
  */
+let scriptureAnimType;
 let books;
+let currentChapter;
 let gmLabels = [];
 let gmMarkers = [];
 let requestedBreadcrumbs;
@@ -222,14 +225,35 @@ let encodedScriptureUrlParameters = function (bookId, chapter, verses, isJst) {
 
 let getScriptureCallback = function (chapterHtml) {
     let width = $(window).width();
-    $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 300, function(){
-        document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
-        $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, 300);
-        document.querySelectorAll(".navheading").forEach(function (element) {
-            element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
-        });
-        document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
-    });
+    switch (scriptureAnimType) {
+        case "fade":
+            $(`#${DIV_SCRIPTURES}`).fadeOut(ANIMATION_SPEED, function(){
+                document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
+                $(`#${DIV_SCRIPTURES}`).fadeIn(ANIMATION_SPEED);
+                document.querySelectorAll(".navheading").forEach(function (element) {
+                    element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
+                });
+                document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
+            });
+        case "left":
+            $(`#${DIV_SCRIPTURES}`).animate({left : -width}, ANIMATION_SPEED, function(){
+                document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
+                $(`#${DIV_SCRIPTURES}`).css({left: width}).show().animate({left: 0}, ANIMATION_SPEED);
+                document.querySelectorAll(".navheading").forEach(function (element) {
+                    element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
+                });
+                document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
+            });
+        case "right":
+            $(`#${DIV_SCRIPTURES}`).animate({right : width}, ANIMATION_SPEED, function(){
+                document.getElementById(DIV_SCRIPTURES).innerHTML = chapterHtml;
+                $(`#${DIV_SCRIPTURES}`).css({left: -width}).show().animate({left: 0}, ANIMATION_SPEED);
+                document.querySelectorAll(".navheading").forEach(function (element) {
+                    element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
+                });
+                document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
+            });
+    }
     setupMarkers();
 };
 
@@ -371,6 +395,7 @@ let mergePlacename = function (placename, index) {
 let navigateBook = function (bookId) {
     let book = books[bookId];
     let volume;
+    currentChapter = -1;
 
     if (book !== undefined) {
         volume = volumeForId(book.parentBookId);
@@ -439,12 +464,13 @@ let navigateChapter = function (bookId, chapter) {
 };
 
 let navigateHome = function (volumeId) {
-    $(`#${DIV_SCRIPTURES}`).fadeOut(300, function(){
+    currentChapter = -1;
+    $(`#${DIV_SCRIPTURES}`).fadeOut(ANIMATION_SPEED, function(){
         document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({
             id: DIV_SCRIPTURES_NAVIGATOR,
             content: volumesGridContent(volumeId)
         });
-        $(`#${DIV_SCRIPTURES}`).fadeIn(300);
+        $(`#${DIV_SCRIPTURES}`).fadeIn(ANIMATION_SPEED);
     });
 
     document.getElementById(DIV_BREADCRUMBS).innerHTML = breadcrumbs(volumeForId(volumeId));
@@ -503,6 +529,13 @@ let onHashChanged = function () {
                 navigateBook(bookId);
             } else {
                 let chapter = Number(ids[2]);
+                if (currentChapter === -1) {
+                    scriptureAnimType = "fade";
+                } else if (chapter === currentChapter + 1) {
+                    scriptureAnimType = "left"
+                } else {
+                    scriptureAnimType = "right"
+                }
 
                 if (bookChapterValid(bookId, chapter)) {
                     navigateChapter(bookId, chapter);
@@ -623,9 +656,9 @@ let transitionBreadcrumbs = function (newCrumbs) {
 };
 
 let transitionScriptures = function (newContent) {
-    $(`#${DIV_SCRIPTURES}`).fadeOut(300, function(){
+    $(`#${DIV_SCRIPTURES}`).fadeOut(ANIMATION_SPEED, function(){
         document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
-        $(`#${DIV_SCRIPTURES}`).fadeIn(300);
+        $(`#${DIV_SCRIPTURES}`).fadeIn(ANIMATION_SPEED);
     });
     setupMarkers(newContent);
 };
