@@ -26,7 +26,7 @@
 /*------------------------------------------------------------------------
  *                      CONSTANTS
  */
-const ANIMATION_SPEED = 300
+const ANIMATION_SPEED = 300;
 const BOTTOM_PADDING = "<br /><br />";
 const CLASS_BOOKS = "books";
 const CLASS_VOLUME = "volume";
@@ -59,7 +59,7 @@ const ZOOM_RATIO = 450;
  */
 let scriptureAnimType;
 let books;
-let currentChapter;
+let currentChapter -1;
 let gmLabels = [];
 let gmMarkers = [];
 let requestedBreadcrumbs;
@@ -224,7 +224,7 @@ let encodedScriptureUrlParameters = function (bookId, chapter, verses, isJst) {
 };
 
 let getScriptureCallback = function (chapterHtml) {
-    let width = $(window).width();
+    let width = $(`#${DIV_SCRIPTURES}`).width();
     switch (scriptureAnimType) {
         case "fade":
             $(`#${DIV_SCRIPTURES}`).fadeOut(ANIMATION_SPEED, function(){
