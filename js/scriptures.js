@@ -233,7 +233,6 @@ let getScriptureCallback = function (chapterHtml) {
                 document.querySelectorAll(".navheading").forEach(function (element) {
                     element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
                 });
-                document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
             });
         case "left":
             $(`#${DIV_SCRIPTURES}`).animate({left : -width}, ANIMATION_SPEED, function(){
@@ -242,7 +241,6 @@ let getScriptureCallback = function (chapterHtml) {
                 document.querySelectorAll(".navheading").forEach(function (element) {
                     element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
                 });
-                document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
             });
         case "right":
             $(`#${DIV_SCRIPTURES}`).animate({right : -width}, ANIMATION_SPEED, function(){
@@ -251,9 +249,12 @@ let getScriptureCallback = function (chapterHtml) {
                 document.querySelectorAll(".navheading").forEach(function (element) {
                     element.appendChild(parseHtml(`<div class="nextprev">${requestedNextPrevious}</div>`)[0]);
                 });
-                document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
             });
     }
+    $(`#${DIV_BREADCRUMBS}`).fadeOut("slow", function(){
+        document.getElementById(DIV_BREADCRUMBS).innerHTML = requestedBreadcrumbs;
+        $(`#${DIV_BREADCRUMBS}`).fadeIn("slow");
+    });
     setupMarkers();
 };
 
@@ -473,7 +474,10 @@ let navigateHome = function (volumeId) {
         $(`#${DIV_SCRIPTURES}`).fadeIn(ANIMATION_SPEED);
     });
 
-    document.getElementById(DIV_BREADCRUMBS).innerHTML = breadcrumbs(volumeForId(volumeId));
+    $(`#${DIV_BREADCRUMBS}`).fadeOut("slow", function(){
+        document.getElementById(DIV_BREADCRUMBS).innerHTML = breadcrumbs(volumeForId(volumeId));
+        $(`#${DIV_BREADCRUMBS}`).fadeIn("slow");
+    });
 };
 
 let nextChapter = function (bookId, chapter) {
@@ -653,7 +657,10 @@ let titleForBookChapter = function (book, chapter) {
 };
 
 let transitionBreadcrumbs = function (newCrumbs) {
-    document.getElementById(DIV_BREADCRUMBS).innerHTML = newCrumbs;
+    $(`#${DIV_BREADCRUMBS}`).fadeOut("slow", function(){
+        document.getElementById(DIV_BREADCRUMBS).innerHTML = newCrumbs;
+        $(`#${DIV_BREADCRUMBS}`).fadeIn("slow");
+    });
 };
 
 let transitionScriptures = function (newContent) {
