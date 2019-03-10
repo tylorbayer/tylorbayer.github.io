@@ -46,6 +46,7 @@ const MIN_ZOOM_LEVEL = 6;
 const REQUEST_GET = "GET";
 const REQUEST_STATUS_OK = 200;
 const REQUEST_STATUS_ERROR = 400;
+const SPAN_SHOWHIDE = "showhide-span";
 const TAG_HEADER5 = "h5";
 const TAG_LIST_ITEM = "li";
 const TAG_UNORDERED_LIST = "ul";
@@ -73,10 +74,10 @@ let volumes;
  */
 $(`#${DIV_SHOWHIDE}`).click(function() {
     $(`#${DIV_SCRIPTURES}`).fadeToggle(ANIMATION_SPEED, function () {
-        if ($(`#${DIV_SHOWHIDE}`).first().text() === "<<") {
-            $(`#${DIV_SHOWHIDE}`).first().text(">>");
+        if ($(`#${SPAN_SHOWHIDE}`).text() === "<<") {
+            $(`#${SPAN_SHOWHIDE}`).text(">>");
         } else {
-            $(`#${DIV_SHOWHIDE}`).first().text(">>");
+            $(`#${SPAN_SHOWHIDE}`).text(">>");
         }
     });
 });
