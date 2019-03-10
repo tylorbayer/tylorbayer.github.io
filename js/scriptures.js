@@ -536,6 +536,7 @@ let onHashChanged = function () {
                 } else {
                     scriptureAnimType = "right"
                 }
+                currentChapter = chapter;
 
                 if (bookChapterValid(bookId, chapter)) {
                     navigateChapter(bookId, chapter);
