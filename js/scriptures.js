@@ -73,10 +73,11 @@ let volumes;
  */
 $(`#${DIV_SHOWHIDE}`).click(function() {
     $(`#${DIV_SCRIPTURES}`).fadeToggle(ANIMATION_SPEED, function () {
-        $(`#${DIV_SCRIPTURES}`).first().text(">>")
-    },
-    function () {
-        $(`#${DIV_SCRIPTURES}`).first().text("<<")
+        if ($(`#${DIV_SCRIPTURES}`).first().text() === "<<") {
+            $(`#${DIV_SCRIPTURES}`).first().text(">>");
+        } else {
+            $(`#${DIV_SCRIPTURES}`).first().text(">>");
+        }
     });
 });
 
