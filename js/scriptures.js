@@ -33,6 +33,7 @@ const CLASS_VOLUME = "volume";
 const DIV_BREADCRUMBS = "crumbs";
 const DIV_SCRIPTURES_NAVIGATOR = "scripnav";
 const DIV_SCRIPTURES = "scriptures";
+const DIV_SHOWHIDE = "showhide";
 const INDEX_PLACENAME = 2;
 const INDEX_LATITUDE = 3;
 const INDEX_LONGITUDE = 4;
@@ -70,6 +71,10 @@ let volumes;
 /*------------------------------------------------------------------------
  *                      PRIVATE METHODS
  */
+$(`#${DIV_SHOWHIDE}`).click(function() {
+    $(`#${DIV_SCRIPTURES}`).fadeToggle(ANIMATION_SPEED)
+});
+
 let addMarker = function (placename, latitude, longitude) {
     let index = markerIndex(latitude, longitude);
 
