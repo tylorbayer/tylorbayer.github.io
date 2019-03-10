@@ -616,8 +616,15 @@ let transitionBreadcrumbs = function (newCrumbs) {
 };
 
 let transitionScriptures = function (newContent) {
-    $(`#${DIV_SCRIPTURES}`).animate({ left: 100 });
-    document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
+    let width = $(window).width();
+    // $('#divID').animate({left : -width}, 500, function(){ $div.hide() });
+    // $div.css({left: width}).show().animate({left: 0}, 500);
+
+    $(`#${DIV_SCRIPTURES}`).animate({left : -width}, 500, function(){
+        $(this).replaceWith(htmlDiv({content: newContent}));
+        $(`#${DIV_SCRIPTURES}`).css({left: width}).animate({left: 0}, 500);
+    });
+    // document.getElementById(DIV_SCRIPTURES).innerHTML = htmlDiv({content: newContent});
     setupMarkers(newContent);
 };
 
